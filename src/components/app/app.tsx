@@ -1,5 +1,5 @@
 import { JSX } from "react"
-import { AppRoute } from "../../const";
+import { AppRoute, AuthStatus } from "../../const";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "../../pages/main/main"
 import Favorites from "../../pages/favorites/favorites";
@@ -21,7 +21,14 @@ function App({ rentalOffersCount }: AppMainPageProps): JSX.Element {
             element={<Main rentalOffersCount={rentalOffersCount} />}
           ></Route>
           <Route path={AppRoute.LOGIN} element={<Login />}></Route>
-          <Route path={AppRoute.FAVORITES} element={<Favorites />}></Route>
+          <Route
+            path={AppRoute.FAVORITES}
+            element={
+              <PrivateRoute authStatus={AuthStatus.NO_AUTH}>
+                <Favorites />
+              </PrivateRoute>
+            }
+          ></Route>
           <Route path={AppRoute.OFFER} element={<Offer />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
