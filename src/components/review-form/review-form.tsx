@@ -6,16 +6,16 @@ function ReviewForm(): JSX.Element {
   const [review, setReview] = React.useState<string>("");
   const [rating, setRating] = React.useState<number>(0);
   
-  const handleReviewChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChangeReview = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setReview(e.target.value);
   };
 
-  const handleRatingChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRating = (e: ChangeEvent<HTMLInputElement>) => {
     setRating(Number(e.target.value));
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setReview("");
     setRating(0);
   };
@@ -33,7 +33,7 @@ function ReviewForm(): JSX.Element {
               id={item.value + "-stars"}
               type="radio"
               checked={rating === item.value}
-              onChange={handleRatingChange}
+              onChange={handleChangeRating}
             ></input>
             <label
               htmlFor={item.value + "-stars"}
@@ -53,7 +53,7 @@ function ReviewForm(): JSX.Element {
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={review}
-        onChange={handleReviewChange}
+        onChange={handleChangeReview}
       ></textarea>
 
       <div className="reviews__button-wrapper">
