@@ -1,10 +1,10 @@
 import { JSX } from "react";
+import { parseRating } from "../../utils";
 import { Link } from "react-router-dom";
 import { AppRoute, BookmarkPlace, BookmarkSize } from "../../const";
-import { parseRating } from "../../utils";
 import Bookmark from "../bookmark/bookmark";
 
-type OfferCardProps = {
+type FavOfferCardProps = {
   id: string;
   previewImg: string;
   type: string;
@@ -12,36 +12,34 @@ type OfferCardProps = {
   price: number;
   rating: number;
   isPremium: boolean;
-  isFavorite: boolean;
 };
 
-function OfferCard({ id, previewImg, type, title, price, rating, isPremium, isFavorite }: OfferCardProps): JSX.Element {
+function FavOfferCard({ id, previewImg, type, title, price, rating, isPremium }: FavOfferCardProps): JSX.Element {
   return (
-    <article className="cities__card place-card">
+    <article className="favorites__card place-card">
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.OFFER}/${id}`}>
           <img
             className="place-card__image"
             src={previewImg}
-            width="260"
-            height="200"
+            width="150"
+            height="110"
             alt="Place image"
           ></img>
         </Link>
       </div>
-
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <Bookmark inBookmarks={isFavorite} size={BookmarkSize.MEDIUM} place={BookmarkPlace[AppRoute.MAIN]} />
+          <Bookmark inBookmarks={true} size={BookmarkSize.MEDIUM} place={BookmarkPlace[AppRoute.FAVORITES]} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -58,4 +56,4 @@ function OfferCard({ id, previewImg, type, title, price, rating, isPremium, isFa
   );
 }
 
-export default OfferCard;
+export default FavOfferCard;

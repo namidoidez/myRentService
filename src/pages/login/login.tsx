@@ -1,6 +1,6 @@
 import { JSX } from "react";
 
-export default function Login(): JSX.Element {
+function Login(): JSX.Element {
   return (
     <div className="page page--gray page--login">
       <header className="header">
@@ -10,7 +10,7 @@ export default function Login(): JSX.Element {
               <a className="header__logo-link" href="main.html">
                 <img
                   className="header__logo"
-                  src="img/logo.svg"
+                  src="/img/logo.svg"
                   alt="Rent service logo"
                   width="81"
                   height="41"
@@ -66,3 +66,5 @@ export default function Login(): JSX.Element {
     </div>
   );
 }
+
+export default Login;

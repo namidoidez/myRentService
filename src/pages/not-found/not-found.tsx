@@ -1,10 +1,11 @@
 import { JSX } from "react";
-import Header from "../../components/header";
+import Header from "../../components/header/header";
 
 function NotFound(): JSX.Element {
   return (
     <div className="page page--gray">
       <Header />
+      
       <div
         style={{
           display: "flex",
