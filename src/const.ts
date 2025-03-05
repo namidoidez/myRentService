@@ -1,18 +1,14 @@
-const Setting = { 
-    rentOffersCount: 312,
-} as const;
-
 enum AppRoute {
-    MAIN = '/',
-    LOGIN = '/login',
-    FAVORITES = '/favorites',
-    OFFER = '/offer/:id',
-};
+  MAIN = "/",
+  LOGIN = "/login",
+  FAVORITES = "/favorites",
+  OFFER = "/offer",
+}
 
 enum AuthStatus {
-    AUTH,
-    NO_AUTH,
-    UNKNOWN,
-};
+  AUTH,
+  NO_AUTH,
+  UNKNOWN,
+}
 
-export { Setting, AppRoute, AuthStatus }
+export { AppRoute, AuthStatus };
