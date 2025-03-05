@@ -9,7 +9,7 @@ type OfferCity = {
   location: OfferLocation;
 };
 
-type HostOffer = {
+type OfferHost = {
   name: string;
   avatarUrl: string;
   isPro: boolean;
@@ -28,7 +28,7 @@ type FullOffer = {
   desc: string;
   bedrooms: number;
   goods: string[];
-  host: HostOffer;
+  host: OfferHost;
   images: string[];
   maxAdults: number;
 };
@@ -46,4 +46,4 @@ type OfferItem = {
   previewImage: string;
 };
 
-export { OfferLocation, OfferCity, HostOffer, FullOffer, OfferItem };
+export { OfferLocation, OfferCity, OfferHost, FullOffer, OfferItem };
