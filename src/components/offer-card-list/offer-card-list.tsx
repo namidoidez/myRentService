@@ -1,16 +1,15 @@
 import { JSX } from "react";
-import { FullOffer, OfferItem } from "../../types/offer";
 import OfferCard from "../offer-card/offer-card";
+import { FullOffer, OfferItem } from "../../types/offer";
 
 type OfferCardListProps = {
   offerList?: OfferItem[];
   fullOffers?: FullOffer[];
+  onHover: (id?: string) => void;
   place: string;
 };
 
-function OfferCardList({ offerList, fullOffers, place }: OfferCardListProps): JSX.Element {
-  console.log(place);
-
+function OfferCardList({ offerList, fullOffers, onHover, place }: OfferCardListProps): JSX.Element {
   return (
     <div className={place}>
       {offerList
@@ -25,6 +24,7 @@ function OfferCardList({ offerList, fullOffers, place }: OfferCardListProps): JS
               previewImg={offer.previewImage}
               isPremium={offer.isPremium}
               isFavorite={offer.isFavorite}
+              onHover={onHover}
             />
           ))
         : fullOffers &&
@@ -39,6 +39,7 @@ function OfferCardList({ offerList, fullOffers, place }: OfferCardListProps): JS
               previewImg={offer.images[0]}
               isPremium={offer.isPremium}
               isFavorite={offer.isFavorite}
+              onHover={onHover}
             />
           ))}
     </div>

@@ -1,16 +1,17 @@
-import { JSX } from "react";
-import Header from "../../components/header/header";
-import OfferCard from "../../components/offer-card/offer-card";
-import { FullOffer } from "../../types/offer";
+import React, { JSX } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../../components/header/header";
 import NotFound from "../not-found/not-found";
-import { parseRating } from "../../utils";
 import ReviewForm from "../../components/review-form/review-form";
-import OfferReviewList from "../../components/offer-review-list/offer-review-list";
-import { reviews } from "../../mocks/reviews";
-import OfferCardList from "../../components/offer-card-list/offer-card-list";
-import { AppRoute, BookmarkPlace, BookmarkSize, OfferListPlace } from "../../const";
 import Bookmark from "../../components/bookmark/bookmark";
+import OfferReviewList from "../../components/offer-review-list/offer-review-list";
+import OfferCardList from "../../components/offer-card-list/offer-card-list";
+import OffersMap from "../../components/offers-map/offers-map";
+import { FullOffer } from "../../types/offer";
+import { parseRating } from "../../utils";
+import { AppRoute, BookmarkPlace, BookmarkSize, OfferListPlace } from "../../const";
+import { reviews } from "../../mocks/reviews";
+import { offerList } from "../../mocks/offer-list";
 
 type OfferProps = {
   offers: FullOffer[];
@@ -18,7 +19,13 @@ type OfferProps = {
 
 function Offer({ offers }: OfferProps): JSX.Element {
   const params = useParams();
-  const offer = offers.find((offer) => offer.id === params.id);
+  const offer = offers.filter((offer) => offer.id === params.id)[0];
+  const [selectedOffer, setSelectedOffer] = React.useState<FullOffer | undefined>(offer);
+
+  const handleSelectOffer = (id?: string) => {
+    const _offer = !id ? offer : offers.find(offer => offer.id === id);
+    setSelectedOffer(_offer);
+  }
 
   if (!offer) {
     return <NotFound />;
@@ -123,7 +130,13 @@ function Offer({ offers }: OfferProps): JSX.Element {
             </div>
           </div>
 
-          <section className="offer__map map"></section>
+          <section className="offer__map map">
+            <OffersMap
+              city={offer.city}
+              offerList={offerList}
+              selectedOffer={selectedOffer}
+            ></OffersMap>
+          </section>
         </section>
 
         <div className="container">
@@ -131,7 +144,7 @@ function Offer({ offers }: OfferProps): JSX.Element {
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <OfferCardList fullOffers={offers.filter(o => o.id !== offer.id)} place={OfferListPlace[AppRoute.OFFER]} />
+            <OfferCardList fullOffers={offers.filter(o => o.id !== offer.id)} onHover={handleSelectOffer} place={OfferListPlace[AppRoute.OFFER]} />
           </section>
         </div>
       </main>

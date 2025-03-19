@@ -81,6 +81,12 @@ const CITIES: OfferCity[] = [
   },
 ];
 
+const URL_MARKER_DEFAULT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+const URL_MARKER_CURRENT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+
 const RATINGS: ReviewRating[] = [
   { value: 5, title: "perfect" },
   { value: 4, title: "good" },
@@ -89,4 +95,6 @@ const RATINGS: ReviewRating[] = [
   { value: 1, title: "terribly" },
 ];
 
-export { AppRoute, AuthStatus, BookmarkSize, BookmarkPlace, OfferListPlace, CITIES, RATINGS };
+export { AppRoute, AuthStatus } 
+export { BookmarkSize, BookmarkPlace, OfferListPlace };
+export { CITIES, URL_MARKER_DEFAULT, URL_MARKER_CURRENT, RATINGS };

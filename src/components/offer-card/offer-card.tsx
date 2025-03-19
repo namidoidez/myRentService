@@ -1,8 +1,8 @@
 import { JSX } from "react";
 import { Link } from "react-router-dom";
-import { AppRoute, BookmarkPlace, BookmarkSize } from "../../const";
-import { parseRating } from "../../utils";
 import Bookmark from "../bookmark/bookmark";
+import { parseRating } from "../../utils";
+import { AppRoute, BookmarkPlace, BookmarkSize } from "../../const";
 
 type OfferCardProps = {
   id: string;
@@ -13,11 +13,16 @@ type OfferCardProps = {
   rating: number;
   isPremium: boolean;
   isFavorite: boolean;
+  onHover: (id?: string) => void;
 };
 
-function OfferCard({ id, previewImg, type, title, price, rating, isPremium, isFavorite }: OfferCardProps): JSX.Element {
+function OfferCard({ id, previewImg, type, title, price, rating, isPremium, isFavorite, onHover }: OfferCardProps): JSX.Element {
   return (
-    <article className="cities__card place-card">
+    <article
+      className="cities__card place-card"
+      onMouseEnter={() => onHover(id)}
+      onMouseLeave={() => onHover(undefined)}
+    >
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -41,7 +46,11 @@ function OfferCard({ id, previewImg, type, title, price, rating, isPremium, isFa
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <Bookmark inBookmarks={isFavorite} size={BookmarkSize.MEDIUM} place={BookmarkPlace[AppRoute.MAIN]} />
+          <Bookmark
+            inBookmarks={isFavorite}
+            size={BookmarkSize.MEDIUM}
+            place={BookmarkPlace[AppRoute.MAIN]}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
