@@ -2,10 +2,10 @@ import { OfferCity } from "./types/offer";
 import { ReviewRating } from "./types/review";
 
 enum AppRoute {
-  MAIN = "/",
-  LOGIN = "/login",
+  MAIN =      "/",
+  LOGIN =     "/login",
   FAVORITES = "/favorites",
-  OFFER = "/offer",
+  OFFER =     "/offer",
 }
 
 enum AuthStatus {
@@ -16,12 +16,12 @@ enum AuthStatus {
 
 const BookmarkSize = {
   MEDIUM: { width: 18, height: 19 },
-  LARGE: { width: 31, height: 33 },
+  LARGE:  { width: 31, height: 33 },
 }
 
 const BookmarkPlace = {
-  [AppRoute.MAIN]: "place-card__bookmark",
-  [AppRoute.OFFER]: "offer__bookmark",
+  [AppRoute.MAIN]:      "place-card__bookmark",
+  [AppRoute.OFFER]:     "offer__bookmark",
   [AppRoute.FAVORITES]: "place-card__bookmark",
 };
 
@@ -77,10 +77,10 @@ const CITIES: OfferCity[] = [
 ];
 
 const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
 
 const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg";
 
 const RATINGS: ReviewRating[] = [
   { value: 5, title: "perfect" },
