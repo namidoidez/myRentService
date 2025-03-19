@@ -6,12 +6,11 @@ type OfferCardListProps = {
   offerList?: OfferItem[];
   fullOffers?: FullOffer[];
   onHover: (id?: string) => void;
-  place: string;
 };
 
-function OfferCardList({ offerList, fullOffers, onHover, place }: OfferCardListProps): JSX.Element {
+function OfferCardList({ offerList, fullOffers, onHover }: OfferCardListProps): JSX.Element {
   return (
-    <div className={place}>
+    <>
       {offerList
         ? offerList.map((offer) => (
             <OfferCard
@@ -42,7 +41,7 @@ function OfferCardList({ offerList, fullOffers, onHover, place }: OfferCardListP
               onHover={onHover}
             />
           ))}
-    </div>
+    </>
   );
 }
 

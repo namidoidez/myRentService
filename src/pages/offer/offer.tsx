@@ -9,7 +9,7 @@ import OfferCardList from "../../components/offer-card-list/offer-card-list";
 import OffersMap from "../../components/offers-map/offers-map";
 import { FullOffer } from "../../types/offer";
 import { parseRating } from "../../utils";
-import { AppRoute, BookmarkPlace, BookmarkSize, OfferListPlace } from "../../const";
+import { AppRoute, BookmarkPlace, BookmarkSize } from "../../const";
 import { reviews } from "../../mocks/reviews";
 import { offerList } from "../../mocks/offer-list";
 
@@ -144,7 +144,9 @@ function Offer({ offers }: OfferProps): JSX.Element {
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <OfferCardList fullOffers={offers.filter(o => o.id !== offer.id)} onHover={handleSelectOffer} place={OfferListPlace[AppRoute.OFFER]} />
+            <div className="near-places__list places__list">
+              <OfferCardList fullOffers={offers.filter(o => o.id !== offer.id)} onHover={handleSelectOffer} />
+            </div>
           </section>
         </div>
       </main>

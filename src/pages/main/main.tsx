@@ -5,7 +5,7 @@ import OfferCardList from "../../components/offer-card-list/offer-card-list";
 import OffersMap from "../../components/offers-map/offers-map";
 import { OfferCity, OfferItem } from "../../types/offer";
 import { groupOffersByCity } from "../../utils";
-import { AppRoute, CITIES, OfferListPlace } from "../../const";
+import { CITIES } from "../../const";
 
 type MainProps = {
   offerList: OfferItem[];
@@ -94,11 +94,12 @@ function Main({ offerList }: MainProps): JSX.Element {
                     </ul>
                   </form>
 
-                  <OfferCardList
-                    offerList={currentOffers}
-                    onHover={handleSelectOffer}
-                    place={OfferListPlace[AppRoute.MAIN]}
-                  />
+                  <div className="cities__places-list places__list tabs__content">
+                    <OfferCardList
+                      offerList={currentOffers}
+                      onHover={handleSelectOffer}
+                    />
+                  </div>
                 </section>
                 
                 <div className="cities__right-section">

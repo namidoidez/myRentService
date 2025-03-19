@@ -25,11 +25,6 @@ const BookmarkPlace = {
   [AppRoute.FAVORITES]: "place-card__bookmark",
 };
 
-const OfferListPlace = {
-  [AppRoute.MAIN]: "cities__places-list places__list",
-  [AppRoute.OFFER]: "near-places__list places__list",
-};
-
 const CITIES: OfferCity[] = [
   {
     name: "Paris",
@@ -96,5 +91,5 @@ const RATINGS: ReviewRating[] = [
 ];
 
 export { AppRoute, AuthStatus } 
-export { BookmarkSize, BookmarkPlace, OfferListPlace };
+export { BookmarkSize, BookmarkPlace };
 export { CITIES, URL_MARKER_DEFAULT, URL_MARKER_CURRENT, RATINGS };
