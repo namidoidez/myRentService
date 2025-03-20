@@ -3,21 +3,20 @@ import { JSX } from "react";
 import Header from "../../components/header/header";
 import OfferCardList from "../../components/offer-card-list/offer-card-list";
 import OffersMap from "../../components/offers-map/offers-map";
-import { OfferCity, OfferItem } from "../../types/offer";
+import CityList from "../../components/city-list/city-list";
+import { useAppSelector } from "../../hooks";
+import { OfferItem } from "../../types/offer";
 import { groupOffersByCity } from "../../utils";
-import { CITIES } from "../../const";
 
 type MainProps = {
   offerList: OfferItem[];
 };
 
 function Main({ offerList }: MainProps): JSX.Element {
+  const selectedCity = useAppSelector((state) => state.city);
   const groupedOffers = groupOffersByCity(offerList);
-  const [currentCity, setCurrentCity] = React.useState<OfferCity>(
-    offerList[0].city
-  );
-  const [selectedOffer, setSelectedOffer] = React.useState<OfferItem | undefined>(undefined);
-  const currentOffers = React.useMemo(() => groupedOffers[currentCity.name]?.offerList, [groupedOffers, currentCity]);
+  const currentOffers = React.useMemo(() => groupedOffers[selectedCity.name]?.offerList, [groupedOffers, selectedCity]);
+  const [selectedOffer, setSelectedOffer] = React.useState<OfferItem | undefined>(undefined); // hoveredOffer
 
   const handleSelectOffer = (id?: string) => {
     const offer = currentOffers.find(offer => offer.id === id);
@@ -31,25 +30,7 @@ function Main({ offerList }: MainProps): JSX.Element {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {CITIES.map((city) => (
-                <li
-                  className="locations__item"
-                  key={city.name}
-                  onClick={() => setCurrentCity(city)}
-                >
-                  <a
-                    className={`locations__item-link tabs__item ${
-                      city.name == currentCity.name && "tabs__item--active"
-                    }`}
-                  >
-                    <span>{city.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <CityList selectedCity={selectedCity}/>
         </div>
 
         <div className="cities">
@@ -60,7 +41,7 @@ function Main({ offerList }: MainProps): JSX.Element {
                   <h2 className="visually-hidden">Places</h2>
 
                   <b className="places__found">
-                    {currentOffers.length} places to stay in {currentCity.name}
+                    {currentOffers.length} places to stay in {selectedCity.name}
                   </b>
 
                   <form className="places__sorting" action="#" method="get">
@@ -105,7 +86,7 @@ function Main({ offerList }: MainProps): JSX.Element {
                 <div className="cities__right-section">
                   <section className="cities__map map">
                     <OffersMap
-                      city={currentCity}
+                      city={selectedCity}
                       offerList={currentOffers}
                       selectedOffer={selectedOffer}
                     ></OffersMap>

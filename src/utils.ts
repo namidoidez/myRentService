@@ -23,6 +23,10 @@ function groupOffersByCity(offerList: OfferItem[]) {
   return groupedOffers;
 }
 
+function getCity(cityName: string, src: OfferCity[]) {
+  return src.filter((city) => city.name === cityName)[0];
+}
+
 function formatDate(date: Date) {
   const monthNames = [
     "January",
@@ -46,4 +50,4 @@ function formatDate(date: Date) {
   return `${day} ${monthNames[monthIndex]} ${year}`;
 }
 
-export { parseRating, groupOffersByCity, formatDate };
+export { parseRating, groupOffersByCity, getCity, formatDate };
