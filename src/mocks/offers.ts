@@ -205,6 +205,59 @@ const offers: FullOffer[] = [
     bedrooms: 1,
     maxAdults: 2,
   },
+  {
+    id: "a5",
+    title: "Cool Cooler",
+    desc: "Cool CoolerCool CoolerCool CoolerCool CoolerCool CoolerCool CoolerCool Cooler",
+    type: "private room",
+    price: 370,
+    images: [
+      "/img/ap3.jpg",
+      "/img/45.jpg",
+      "/img/44.jpg",
+      "/img/43.jpg",
+      "/img/42.jpg",
+      "/img/41.jpg",
+    ],
+    city: {
+      name: "Amsterdam",
+      location: {
+        latitude: 52.3676,
+        longitude: 4.9041,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 52.470216,
+      longitude: 4.595168,
+      zoom: 16,
+    },
+    goods: [
+      "Heating",
+      "Wi-Fi",
+      "Fridge",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Air conditioning",
+      "Washer",
+      "Towels",
+      "Dishwasher",
+      "Kitchen",
+      "Washing machine",
+      "Breakfast",
+      "Coffee machine",
+    ],
+    host: {
+      isPro: true,
+      name: "Alex",
+      avatarUrl: "/img/avatar-angelina.jpg",
+    },
+    isPremium: true,
+    isFavorite: false,
+    rating: 4.579,
+    bedrooms: 3,
+    maxAdults: 3,
+  }
 ];
 
 export { offers };

@@ -2,22 +2,29 @@ import { OfferCity } from "./types/offer";
 import { ReviewRating } from "./types/review";
 
 enum AppRoute {
-  MAIN =      "/",
-  LOGIN =     "/login",
+  MAIN      = "/",
+  LOGIN     = "/login",
   FAVORITES = "/favorites",
-  OFFER =     "/offer",
-}
+  OFFER     = "/offer",
+};
 
 enum AuthStatus {
   AUTH,
   NO_AUTH,
   UNKNOWN,
-}
+};
+
+enum SortOffersType {
+  POPULAR       = "Popular",
+  PRICE_TO_HIGH = "Price: low to high",
+  PRICE_TO_LOW  = "Price: high to low",
+  TOP_RATED     = "Top rated first",
+};
 
 const BookmarkSize = {
   MEDIUM: { width: 18, height: 19 },
   LARGE:  { width: 31, height: 33 },
-}
+};
 
 const BookmarkPlace = {
   [AppRoute.MAIN]:      "place-card__bookmark",
@@ -90,6 +97,6 @@ const RATINGS: ReviewRating[] = [
   { value: 1, title: "terribly" },
 ];
 
-export { AppRoute, AuthStatus } 
+export { AppRoute, AuthStatus, SortOffersType };
 export { BookmarkSize, BookmarkPlace };
 export { CITIES, URL_MARKER_DEFAULT, URL_MARKER_CURRENT, RATINGS };

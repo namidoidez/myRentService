@@ -92,7 +92,30 @@ const offerList: OfferItem[] = [
     isFavorite: true,
     isPremium: false,
     rating: 4.8,
-  }
+  },
+  {
+    id: "a5",
+    title: "Cool Cooler",
+    type: "private room",
+    price: 555,
+    previewImage: '/img/ap3.jpg',
+    city: {
+      name: "Amsterdam",
+      location: {
+        latitude: 52.3676,
+        longitude: 4.9041,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 52.470216,
+      longitude: 4.595168,
+      zoom: 16,
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 4.579,
+  },
 ];
 
 export { offerList };
